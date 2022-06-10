@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import Header from './components/Header'
 
 const App = () => {
   return (
     <div>
-      <h1>Cost Planner</h1>
+      <Header/>
     </div>
   )
 }
