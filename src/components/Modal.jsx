@@ -54,11 +54,10 @@ const Modal = ({setModal, animateModal, setAnimateModal}) => {
                     <label htmlFor='category'>Category</label>
                     <select
                     id='category'
-                    value={category}
-                    //defaultvalue
+                    defaultValue={category}
                     onChange={e => setCategory(e.target.value)}
                     >
-                        <option value='selected' disabled>Select</option>
+                        <option value='' disabled>Select</option>
                         <option value='saving'>Saving</option>
                         <option value='food'>Food</option>
                         <option value='rent'>Rent</option>
