@@ -1,10 +1,13 @@
 import Newbudget from "./Newbudget"
 
-const Header = () => {
+const Header = ({budget, setBudget}) => {
   return (
     <header>
       <h1>Cost Planner</h1>
-      <Newbudget/>
+      <Newbudget
+      budget = {budget}
+      setBudget = {setBudget}
+      />
     </header>
   )
 }
