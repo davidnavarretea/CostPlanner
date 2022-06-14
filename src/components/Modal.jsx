@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import Message from './Message'
 import closeModalImg from '../img/cerrar.svg'
-const Modal = ({setModal, animateModal, setAnimateModal}) => {
+const Modal = ({setModal, animateModal, setAnimateModal, saveSpent}) => {
     // UseStates
     const [name,setName] = useState('')
     const [amount, setAmount] = useState('')
     const [category, setCategory] = useState('')
+    const [message, setMessage] = useState('')
     // Close Modal
     const handleModal = () => {
         setAnimateModal(false)
@@ -15,7 +17,15 @@ const Modal = ({setModal, animateModal, setAnimateModal}) => {
     // Validation Form
     const handleSubmit = e => {
         e.preventDefault()
-        console.log('david')
+        if([name, amount, category].includes('')){
+            setMessage('Fill in all fields')
+            setTimeout(() => {
+                setMessage('')
+            }, 2000)
+            return
+        }
+        setMessage('')
+        saveSpent({name, amount, category})
     }
     return (
         <div className="modal">
@@ -30,6 +40,7 @@ const Modal = ({setModal, animateModal, setAnimateModal}) => {
                 onSubmit={handleSubmit}
                 className={`formulario ${animateModal ? 'animar' : 'cerrar'}`}>
                 <legend>New Expense</legend>
+                {message && <Message type='error'>{message}</Message>}
                 <div className='campo'>
                     <label htmlFor='name'>Name</label>
                     <input

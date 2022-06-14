@@ -3,15 +3,33 @@ import Header from './components/Header'
 import iconNewSpent from './img/nuevo-gasto.svg'
 import Modal from './components/Modal'
 const App = () => {
+  // UseStates
   const [budget, setBudget] = useState(0)
   const [validationBudget, setValidationBudget] = useState(false)
   const [modal, setModal] = useState(false)
   const [animateModal, setAnimateModal] = useState(false)
+  const [spents, setSpents] = useState([])
+  // New Spent
   const handleNewSpent = () => {
     setModal(true)
     setTimeout(() => {
       setAnimateModal(true)
     }, 100)
+  }
+  // Generate Id
+  const generateId = () => {
+    const random = Math.random().toString(36).substring(2)
+    const fecha = Date.now().toString(36)
+    return random + fecha
+  }
+  // Save Spent
+  const saveSpent = e => {
+    e.id = generateId()
+    setSpents([...spents, e])
+    setAnimateModal(false)
+    setTimeout(() => {
+      setModal(false)
+    }, 400)
   }
   return (
     <>
@@ -35,6 +53,7 @@ const App = () => {
         setModal = {setModal}
         animateModal = {animateModal}
         setAnimateModal = {setAnimateModal}
+        saveSpent = {saveSpent}
         />
       }
     </>
