@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import Header from './components/Header'
-import iconNewSpent from './img/nuevo-gasto.svg'
+import Spentlist from './components/Spentlist'
 import Modal from './components/Modal'
+import iconNewSpent from './img/nuevo-gasto.svg'
 const App = () => {
   // UseStates
   const [budget, setBudget] = useState(0)
@@ -25,10 +26,11 @@ const App = () => {
   // Save Spent
   const saveSpent = e => {
     e.id = generateId()
+    e.date = Date.now()
     setSpents([...spents, e])
     setAnimateModal(false)
     setTimeout(() => {
-      setModal(false)
+    setModal(false)
     }, 400)
   }
   return (
@@ -40,13 +42,19 @@ const App = () => {
       setValidationBudget = {setValidationBudget}
       />
       {validationBudget &&
-        <div className='nuevo-gasto'>
-          <img
-          src={iconNewSpent}
-          alt='iconNewSpent'
-          onClick={handleNewSpent}
-          />
-        </div>
+        <>
+          <main>
+            <Spentlist
+            spents={spents}/>
+          </main>
+          <div className='nuevo-gasto'>
+            <img
+            src={iconNewSpent}
+            alt='iconNewSpent'
+            onClick={handleNewSpent}
+            />
+          </div>
+        </>
       }
       {modal &&
         <Modal
