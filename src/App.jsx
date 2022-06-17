@@ -34,7 +34,7 @@ const App = () => {
     }, 400)
   }
   return (
-    <>
+    <div className={modal && 'fijar'}>
       <Header
       budget = {budget}
       setBudget = {setBudget}
@@ -64,7 +64,7 @@ const App = () => {
         saveSpent = {saveSpent}
         />
       }
-    </>
+    </div>
   )
 }
 
