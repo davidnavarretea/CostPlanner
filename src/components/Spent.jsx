@@ -13,6 +13,7 @@ import Leisure from '../img/icono_ocio.svg'
 import Health from '../img/icono_salud.svg'
 import Subscriptions from '../img/icono_suscripciones.svg'
 import Otherexpenses from '../img/icono_gastos.svg'
+import Formatamount from './Formatamount'
 const images = {
   saving: Saving,
   food: Food,
@@ -65,7 +66,7 @@ const trailingActions = () => (
               <span>{dateFormat(spent.date)}</span></p>
             </div>
           </div>
-          <p className="cantidad-gasto">${spent.amount}</p>
+          <p className="cantidad-gasto">{Formatamount(parseInt(spent.amount))}</p>
         </div>
       </SwipeableListItem>
     </SwipeableList>

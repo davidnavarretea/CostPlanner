@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Formatamount from "./Formatamount"
 const Budgetcontrol = ({budget, spents}) => {
     /* UseStates */
     const [available, setAvailable] = useState(0)
@@ -12,13 +13,6 @@ const Budgetcontrol = ({budget, spents}) => {
     useEffect(() => {
         setAvailable(budget - totalSpents)
     }, [spents])
-    /* Format Money */
-    const formatAmount = c => {
-        return c.toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        })
-    }
   return (
     <div className="contenedor contenedor-presupuesto sombra dos-columnas">
         <div>
@@ -26,13 +20,13 @@ const Budgetcontrol = ({budget, spents}) => {
         </div>
         <div className="contenido-presupuesto">
             <p>
-                <span>Budget: </span> {formatAmount(budget)}
+                <span>Budget: </span> {Formatamount(budget)}
             </p>
             <p>
-                <span>Available: </span> {formatAmount(available)}
+                <span>Available: </span> {Formatamount(available)}
             </p>
             <p>
-                <span>Spent: </span> {formatAmount(spent)}
+                <span>Spent: </span> {Formatamount(spent)}
             </p>
         </div>
     </div>
