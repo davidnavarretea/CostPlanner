@@ -17,7 +17,7 @@ const Newbudget = ({budget, setBudget, setValidationBudget}) => {
     <div className="contenedor-presupuesto contenedor sombra">
       <form onSubmit={handleBudget} className="formulario">
         <div className="campo">
-          <label>Set Budget</label>
+          <label>SET BUDGET</label>
           <input
             className="nuevo-presupuesto"
             type="number"

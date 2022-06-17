@@ -1,3 +1,11 @@
+import {
+  LeadingActions,
+  SwipeableList,
+  SwipeableListItem,
+  SwipeAction,
+  TrailingActions
+} from 'react-swipeable-list'
+import "react-swipeable-list/dist/styles.css"
 import Saving from '../img/icono_ahorro.svg'
 import Food from '../img/icono_comida.svg'
 import Rent from '../img/icono_casa.svg'
@@ -24,22 +32,43 @@ const Spent = ({spent}) => {
     }
   return dateformat.toLocaleDateString('es-ES', options)
 }
+const leadingActions = () => (
+  <LeadingActions>
+    <SwipeAction onClick={() => (2+2)}>
+      Edit
+    </SwipeAction>
+  </LeadingActions>
+)
+const trailingActions = () => (
+  <TrailingActions>
+    <SwipeAction onClick={() => (2+2)}>
+      Delete
+    </SwipeAction>
+  </TrailingActions>
+  )
   return (
-    <div className="gasto sombra">
-      <div className="contenido-gasto">
-        <img
-          src={images[spent.category]}
-          alt={spent.category}
-        />
-        <div className="descripcion-gasto">
-          <p className="categoria">{spent.category}</p>
-          <p className="nombre-gasto">{spent.name}</p>
-          <p className="fecha-gasto">Agregado el: {''}
-          <span>{dateFormat(spent.date)}</span></p>
+    <SwipeableList>
+      <SwipeableListItem
+      leadingActions={leadingActions()}
+      trailingActions={trailingActions()}
+      >
+        <div className="gasto sombra">
+          <div className="contenido-gasto">
+            <img
+              src={images[spent.category]}
+              alt={spent.category}
+            />
+            <div className="descripcion-gasto">
+              <p className="categoria">{spent.category}</p>
+              <p className="nombre-gasto">{spent.name}</p>
+              <p className="fecha-gasto">Agregado el: {''}
+              <span>{dateFormat(spent.date)}</span></p>
+            </div>
+          </div>
+          <p className="cantidad-gasto">${spent.amount}</p>
         </div>
-      </div>
-      <p className="cantidad-gasto">${spent.amount}</p>
-    </div>
+      </SwipeableListItem>
+    </SwipeableList>
   )
 }
 
