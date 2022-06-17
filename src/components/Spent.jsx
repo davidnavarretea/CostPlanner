@@ -22,7 +22,7 @@ const images = {
   subscriptions: Subscriptions,
   other: Otherexpenses,
 }
-const Spent = ({spent}) => {
+const Spent = ({spent, setSpentsEdit}) => {
   const dateFormat = date => {
     const dateformat = new Date(date)
     const options = {
@@ -34,7 +34,7 @@ const Spent = ({spent}) => {
 }
 const leadingActions = () => (
   <LeadingActions>
-    <SwipeAction onClick={() => (2+2)}>
+    <SwipeAction onClick={() => setSpentsEdit(spent)}>
       Edit
     </SwipeAction>
   </LeadingActions>

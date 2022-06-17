@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Spentlist from './components/Spentlist'
 import Modal from './components/Modal'
@@ -10,6 +10,12 @@ const App = () => {
   const [modal, setModal] = useState(false)
   const [animateModal, setAnimateModal] = useState(false)
   const [spents, setSpents] = useState([])
+  const [spentsEdit, setSpentsEdit] = useState({})
+  // UseEffects
+  useEffect(() => {
+    Object.values(spentsEdit).length > 0 && handleNewSpent()
+  }, [spentsEdit])
+  
   // New Spent
   const handleNewSpent = () => {
     setModal(true)
@@ -46,7 +52,9 @@ const App = () => {
         <>
           <main>
             <Spentlist
-            spents={spents}/>
+            spents={spents}
+            setSpentsEdit={setSpentsEdit}
+            />
           </main>
           <div className='nuevo-gasto'>
             <img
