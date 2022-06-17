@@ -45,7 +45,7 @@ h2 {
 
 header {
     background-image: url(./img/banner.webp);
-    background-size:70vw;
+    background-size:70rem;
     background-position: top;
     background-repeat: no-repeat;
     background-color: #77a2bc;
@@ -57,6 +57,7 @@ header h1 {
     text-align: center;
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     text-transform: uppercase;
+    visibility: hidden;
 }
 
 .formulario {
@@ -415,12 +416,6 @@ body .modal {
     text-align: center;
 }
 /* Banner Media Queries */
-@media (max-width: 1024px){
-    header {
-        background-size: 233vh;
-        background-position: -3rem 0;
-    }
-}
 @media (max-width: 1023px){
     body .modal {
         overflow: auto;
@@ -429,16 +424,7 @@ body .modal {
         text-align: center;
     }
 }
-@media (max-width: 768px){
-    header {
-        background-size: 232vh;
-        background-position: -14rem 0rem;
-    }
-}
 @media (max-width: 428px){
-    header {
-        background-image: none;
-    }
     .formulario input[type="number"].nuevo-presupuesto {
         font-size: 2rem;
 }
@@ -489,7 +475,9 @@ body .modal {
     .nuevo-gasto img {
         width: 10rem;
     }
+}
+@media (max-width: 767px){
     header {
-        background-size: 120vh;
+        background-image: none;
     }
 }
