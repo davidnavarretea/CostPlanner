@@ -45,11 +45,11 @@ h2 {
 
 header {
     background-image: url(./img/banner.webp);
-    background-size:cover;
+    background-size:70vw;
     background-position: top;
     background-repeat: no-repeat;
+    background-color: #77a2bc;
 }
-
 header h1 {
     padding: 3rem 0;
     margin: 0;
@@ -63,6 +63,9 @@ header h1 {
     width: 95%;
     margin: 0 auto;
     padding: 10rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 @media (min-width: 768px) {
     .formulario {
@@ -349,6 +352,7 @@ main {
     top: 3rem;
     width: 3rem;
     height: 3rem;
+    z-index: 10;
 }
 .modal .cerrar-modal img {
     cursor: pointer;
@@ -406,4 +410,55 @@ body .modal {
     align-items: center;
     font-size: 2.4rem;
     text-align: right;
+}
+.campo label, .campo input {
+    text-align: center;
+}
+/* Banner Media Queries */
+@media (max-width: 320px){
+    .formulario input[type="number"].nuevo-presupuesto {
+        font-size: 2rem;
+}
+    header {
+        background-size: 75vh;
+        background-position: -0.6vh 16.4vh;
+    }
+    .formulario {
+        height: 100vh;
+    }
+    .modal .formulario {
+        width: 100vw !important;
+    }
+    body .modal {
+        overflow: auto;
+    }
+    .listado-gastos h2 {
+        text-align: center;
+    }
+    .nuevo-gasto {
+        bottom: 1.6rem;
+        right: 2rem;
+    }
+    .nuevo-gasto img {
+        width: 4rem;
+    }
+    main {
+        padding-top: 2rem;
+    }
+    .contenido-gasto img {
+        width: 5rem;
+    }
+    .descripcion-gasto {
+        text-align: center;
+    }
+    .gasto {
+        width: 100vw;
+        flex-direction: column;
+    }
+    .contenido-gasto {
+        flex-direction: column;
+    }
+    .cantidad-gasto {
+        margin: 0;
+    }
 }
