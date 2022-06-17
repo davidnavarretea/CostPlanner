@@ -415,6 +415,9 @@ body .modal {
 .campo label, .campo input {
     text-align: center;
 }
+.contenido-gasto img {
+    pointer-events: none;
+}
 /* Banner Media Queries */
 @media (max-width: 1023px){
     body .modal {
