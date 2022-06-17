@@ -34,12 +34,13 @@ const App = () => {
     }, 400)
   }
   return (
-    <div className={modal && 'fijar'}>
+    <div className={modal ? 'fijar' : ''}>
       <Header
       budget = {budget}
       setBudget = {setBudget}
       validationBudget = {validationBudget}
       setValidationBudget = {setValidationBudget}
+      spents = {spents}
       />
       {validationBudget &&
         <>
