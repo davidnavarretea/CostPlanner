@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Message from './Message'
 import closeModalImg from '../img/cerrar.svg'
-const Modal = ({setModal, animateModal, setAnimateModal, saveSpent, spentsEdit}) => {
+const Modal = ({setModal, animateModal, setAnimateModal, saveSpent, spentsEdit, setSpentsEdit}) => {
     // UseStates
     const [name,setName] = useState('')
     const [amount, setAmount] = useState('')
@@ -23,6 +23,7 @@ const Modal = ({setModal, animateModal, setAnimateModal, saveSpent, spentsEdit})
     // Close Modal
     const handleModal = () => {
         setAnimateModal(false)
+        setSpentsEdit({})
         setTimeout(() => {
         setModal(false)
         }, 400)

@@ -41,6 +41,7 @@ const App = () => {
       /* Edit Expense */
       const updateSpents = spents.map( stateSpent => stateSpent.id === e.id ? e : stateSpent)
       setSpents(updateSpents)
+      setSpentsEdit({})
     } else {
       /* New Expense */
       e.id = generateId()
@@ -90,6 +91,7 @@ const App = () => {
         setAnimateModal = {setAnimateModal}
         saveSpent = {saveSpent}
         spentsEdit = {spentsEdit}
+        setSpentsEdit = {setSpentsEdit}
         />
       }
     </div>
