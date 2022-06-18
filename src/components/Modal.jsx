@@ -1,12 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Message from './Message'
 import closeModalImg from '../img/cerrar.svg'
-const Modal = ({setModal, animateModal, setAnimateModal, saveSpent}) => {
+const Modal = ({setModal, animateModal, setAnimateModal, saveSpent, spentsEdit}) => {
     // UseStates
     const [name,setName] = useState('')
     const [amount, setAmount] = useState('')
     const [category, setCategory] = useState('')
     const [message, setMessage] = useState('')
+    // UseEffect
+    useEffect(() => {
+        if (Object.values(spentsEdit).length > 0) {
+            setName(spentsEdit.name)
+            setAmount(spentsEdit.amount)
+            setCategory(spentsEdit.category)
+        }
+    }, [])
+    
     // Close Modal
     const handleModal = () => {
         setAnimateModal(false)
@@ -65,7 +74,7 @@ const Modal = ({setModal, animateModal, setAnimateModal, saveSpent}) => {
                     <label htmlFor='category'>Category</label>
                     <select
                     id='category'
-                    defaultValue={category}
+                    value={category}
                     onChange={e => setCategory(e.target.value)}
                     >
                         <option value='' disabled>Select</option>
