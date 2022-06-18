@@ -1,9 +1,11 @@
 import Spent from "./Spent"
-const Spentlist = ({spents, setSpentsEdit, deleteExpense}) => {
+const Spentlist = ({spents, setSpentsEdit, deleteExpense, filter, filterSpents}) => {
   return (
     <div className="listado-gastos contenedor">
-      <h2>{spents.length ? 'Expenses' : 'No expenses'}</h2>
-      {spents.map(spent => (
+      {filter ? (
+        <>
+          <h2>{filterSpents.length ? 'Expenses' : 'No expenses'}</h2>
+          {filterSpents.map(spent => (
         <Spent
         key={spent.id}
         spent={spent}
@@ -11,6 +13,20 @@ const Spentlist = ({spents, setSpentsEdit, deleteExpense}) => {
         deleteExpense={deleteExpense}
         />
       ))}
+        </>
+      ):(
+        <>
+          <h2>{spents.length ? 'Expenses' : 'No expenses'}</h2>
+          {spents.map(spent => (
+        <Spent
+        key={spent.id}
+        spent={spent}
+        setSpentsEdit={setSpentsEdit}
+        deleteExpense={deleteExpense}
+        />
+      ))}
+        </>
+      )}
     </div>
   )
 }

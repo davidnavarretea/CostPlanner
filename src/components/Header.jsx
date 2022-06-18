@@ -1,6 +1,6 @@
 import Budgetcontrol from "./Budgetcontrol"
 import Newbudget from "./Newbudget"
-const Header = ({budget, setBudget, validationBudget, setValidationBudget, spents}) => {
+const Header = ({budget, setBudget, validationBudget, setValidationBudget, spents, setSpents}) => {
   return (
     <header>
       <h1>Cost Planner</h1>
@@ -8,6 +8,9 @@ const Header = ({budget, setBudget, validationBudget, setValidationBudget, spent
         <Budgetcontrol
         budget = {budget}
         spents = {spents}
+        setBudget = {setBudget}
+        setValidationBudget = {setValidationBudget}
+        setSpents = {setSpents}
         /> : (
         <Newbudget
         budget = {budget}
