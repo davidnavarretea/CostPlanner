@@ -1,5 +1,5 @@
 import Spent from "./Spent"
-const Spentlist = ({spents, setSpentsEdit}) => {
+const Spentlist = ({spents, setSpentsEdit, deleteExpense}) => {
   return (
     <div className="listado-gastos contenedor">
       <h2>{spents.length ? 'Expenses' : 'No expenses'}</h2>
@@ -8,6 +8,7 @@ const Spentlist = ({spents, setSpentsEdit}) => {
         key={spent.id}
         spent={spent}
         setSpentsEdit={setSpentsEdit}
+        deleteExpense={deleteExpense}
         />
       ))}
     </div>

@@ -23,7 +23,7 @@ const images = {
   subscriptions: Subscriptions,
   other: Otherexpenses,
 }
-const Spent = ({spent, setSpentsEdit}) => {
+const Spent = ({spent, setSpentsEdit, deleteExpense}) => {
   const dateFormat = date => {
     const dateformat = new Date(date)
     const options = {
@@ -42,7 +42,10 @@ const leadingActions = () => (
 )
 const trailingActions = () => (
   <TrailingActions>
-    <SwipeAction onClick={() => (2+2)}>
+    <SwipeAction 
+      onClick={() => deleteExpense(spent.id)}
+      destructive={true}
+    >
       Delete
     </SwipeAction>
   </TrailingActions>
