@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Formatamount from "./Formatamount"
 import {CircularProgressbar, buildStyles} from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-const Budgetcontrol = ({budget, spents}) => {
+const Budgetcontrol = ({budget, spents, setBudget, setValidationBudget, setSpents}) => {
     /* UseStates */
     const [available, setAvailable] = useState(0)
     const [spent, setSpent] = useState(0)
@@ -18,6 +18,15 @@ const Budgetcontrol = ({budget, spents}) => {
             setPercentageSpent(totalSpents * 100 / budget)
         }, 500)
     }, [spents])
+    // RESET
+    const handleReset = () => {
+        const result = confirm('Reset all data?')
+        if(result){
+            setBudget(0)
+            setValidationBudget(false)
+            setSpents([])
+        }
+    }
   return (
     <div className="contenedor contenedor-presupuesto sombra dos-columnas">
         <div>
@@ -25,10 +34,10 @@ const Budgetcontrol = ({budget, spents}) => {
                 value={percentageSpent}
                 text={`${percentageSpent}%`}
                 styles={buildStyles({
-                    pathColor: '#77a2bc',
+                    pathColor: percentageSpent > 100 ? '#DB2877' : '#77a2bc',
                     trailColor: '#F5F5F5',
                     pathTransitionDuration: 1,
-                    textColor: '#77a2bc',
+                    textColor: percentageSpent > 100 ? '#DB2877' : '#77a2bc',
                 })}
             />
         </div>
@@ -36,12 +45,19 @@ const Budgetcontrol = ({budget, spents}) => {
             <p>
                 <span>Budget: </span> {Formatamount(budget)}
             </p>
-            <p>
+            <p className={available < 0 ? 'negativo' : ''}>
                 <span>Available: </span> {Formatamount(available)}
             </p>
             <p>
                 <span>Spent: </span> {Formatamount(spent)}
             </p>
+            <button
+             className="reset-app"
+             type="button"
+             onClick={handleReset}
+            >
+                Reset
+            </button>
         </div>
     </div>
   )

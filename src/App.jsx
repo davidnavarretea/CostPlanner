@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Spentlist from './components/Spentlist'
 import Modal from './components/Modal'
+import Filter from './components/Filter'
 import iconNewSpent from './img/nuevo-gasto.svg'
 const App = () => {
   // UseStates
@@ -15,6 +16,8 @@ const App = () => {
     JSON.parse(localStorage.getItem('spents')) ?? []
   )
   const [spentsEdit, setSpentsEdit] = useState({})
+  const [filter, setFilter] = useState('')
+  const [filterSpents, setFilterSpents] = useState([])
   // UseEffects
   useEffect(() => {
     if (Object.values(spentsEdit).length > 0) {
@@ -40,8 +43,15 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('spents', JSON.stringify(spents) ?? [])
   }, [spents])
+  /* Filter */
+  useEffect(() => {
+    if(filter){
+      const filterSpents = spents.filter(e => e.category === filter)
+      setFilterSpents(filterSpents)
+    }
+  }, [filter])
   
-  // New Spent
+  // NEW SPENT
   const handleNewSpent = () => {
     setModal(true)
     setSpentsEdit({})
@@ -85,14 +95,21 @@ const App = () => {
       validationBudget = {validationBudget}
       setValidationBudget = {setValidationBudget}
       spents = {spents}
+      setSpents = {setSpents}
       />
       {validationBudget &&
         <>
           <main>
+            <Filter
+            filter={filter}
+            setFilter={setFilter}
+            />
             <Spentlist
             spents={spents}
             setSpentsEdit={setSpentsEdit}
             deleteExpense = {deleteExpense}
+            filter={filter}
+            filterSpents={filterSpents}
             />
           </main>
           <div className='nuevo-gasto'>
