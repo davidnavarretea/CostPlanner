@@ -37,9 +37,16 @@ const App = () => {
   }
   // Save Spent
   const saveSpent = e => {
-    e.id = generateId()
-    e.date = Date.now()
-    setSpents([...spents, e])
+    if (e.id) {
+      /* Edit Expense */
+      const updateSpents = spents.map( stateSpent => stateSpent.id === e.id ? e : stateSpent)
+      setSpents(updateSpents)
+    } else {
+      /* New Expense */
+      e.id = generateId()
+      e.date = Date.now()
+      setSpents([...spents, e])
+    }
     setAnimateModal(false)
     setTimeout(() => {
     setModal(false)

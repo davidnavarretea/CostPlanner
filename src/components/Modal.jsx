@@ -7,12 +7,16 @@ const Modal = ({setModal, animateModal, setAnimateModal, saveSpent, spentsEdit})
     const [amount, setAmount] = useState('')
     const [category, setCategory] = useState('')
     const [message, setMessage] = useState('')
+    const [date, setDate] = useState('')
+    const [id, setId] = useState('')
     // UseEffect
     useEffect(() => {
         if (Object.values(spentsEdit).length > 0) {
             setName(spentsEdit.name)
             setAmount(spentsEdit.amount)
             setCategory(spentsEdit.category)
+            setId(spentsEdit.id)
+            setDate(spentsEdit.date)
         }
     }, [])
     
@@ -34,7 +38,7 @@ const Modal = ({setModal, animateModal, setAnimateModal, saveSpent, spentsEdit})
             return
         }
         setMessage('')
-        saveSpent({name, amount, category})
+        saveSpent({name, amount, category, id, date})
     }
     return (
         <div className="modal">
@@ -48,7 +52,7 @@ const Modal = ({setModal, animateModal, setAnimateModal, saveSpent, spentsEdit})
             <form
                 onSubmit={handleSubmit}
                 className={`formulario ${animateModal ? 'animar' : 'cerrar'}`}>
-                <legend>New Expense</legend>
+                <legend>{spentsEdit.name ? 'Edit Expense' : 'New Expense'}</legend>
                 {message && <Message type='error'>{message}</Message>}
                 <div className='campo'>
                     <label htmlFor='name'>Name</label>
@@ -89,7 +93,7 @@ const Modal = ({setModal, animateModal, setAnimateModal, saveSpent, spentsEdit})
                 </div>
                 <input
                 type='submit'
-                value='Add'
+                value={spentsEdit.name ? 'Edit' : 'Add'}
                 />
             </form>
         </div>
