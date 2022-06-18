@@ -13,12 +13,18 @@ const App = () => {
   const [spentsEdit, setSpentsEdit] = useState({})
   // UseEffects
   useEffect(() => {
-    Object.values(spentsEdit).length > 0 && handleNewSpent()
+    if (Object.values(spentsEdit).length > 0) {
+      setModal(true)
+      setTimeout(() => {
+      setAnimateModal(true)
+      }, 100)
+    }
   }, [spentsEdit])
   
   // New Spent
   const handleNewSpent = () => {
     setModal(true)
+    setSpentsEdit({})
     setTimeout(() => {
       setAnimateModal(true)
     }, 100)
@@ -71,6 +77,7 @@ const App = () => {
         animateModal = {animateModal}
         setAnimateModal = {setAnimateModal}
         saveSpent = {saveSpent}
+        spentsEdit = {spentsEdit}
         />
       }
     </div>
