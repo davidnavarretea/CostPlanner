@@ -5,11 +5,15 @@ import Modal from './components/Modal'
 import iconNewSpent from './img/nuevo-gasto.svg'
 const App = () => {
   // UseStates
-  const [budget, setBudget] = useState(0)
+  const [budget, setBudget] = useState(
+    Number(localStorage.getItem('budget')) ?? 0
+  )
   const [validationBudget, setValidationBudget] = useState(false)
   const [modal, setModal] = useState(false)
   const [animateModal, setAnimateModal] = useState(false)
-  const [spents, setSpents] = useState([])
+  const [spents, setSpents] = useState(
+    JSON.parse(localStorage.getItem('spents')) ?? []
+  )
   const [spentsEdit, setSpentsEdit] = useState({})
   // UseEffects
   useEffect(() => {
@@ -20,6 +24,22 @@ const App = () => {
       }, 100)
     }
   }, [spentsEdit])
+  // LOCAL STORAGE
+  /* 1 */
+  useEffect(() => {
+    const budgetLC = Number(localStorage.getItem('budget')) ?? 0
+    if (budgetLC > 0){
+      setValidationBudget(true)
+    }
+  }, [])
+  /* Budget */
+  useEffect(() => {
+    localStorage.setItem('budget', budget ?? 0)
+  }, [budget])
+  /* Spents */
+  useEffect(() => {
+    localStorage.setItem('spents', JSON.stringify(spents) ?? [])
+  }, [spents])
   
   // New Spent
   const handleNewSpent = () => {
