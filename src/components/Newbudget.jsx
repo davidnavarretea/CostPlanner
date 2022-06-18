@@ -21,7 +21,8 @@ const Newbudget = ({budget, setBudget, setValidationBudget}) => {
           <input
             className="nuevo-presupuesto"
             type="number"
-            value={budget}
+            value={budget ? budget : ''}
+            placeholder='0'
             onChange={e => setBudget(Number(e.target.value))}
           />
         </div>
