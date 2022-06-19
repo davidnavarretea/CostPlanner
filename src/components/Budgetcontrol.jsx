@@ -15,7 +15,7 @@ const Budgetcontrol = ({budget, spents, setBudget, setValidationBudget, setSpent
         setAvailable(budget - totalSpents)
         // Calculate percentageSpent
         setTimeout(() => {
-            setPercentageSpent(totalSpents * 100 / budget)
+            setPercentageSpent(Math.round(totalSpents * 100 / budget))
         }, 500)
     }, [spents])
     // RESET

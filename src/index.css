@@ -247,6 +247,7 @@ main {
     display: flex;
     align-items: center;
     gap: 2rem;
+    justify-content: space-between;
 }
 .filtros label {
     font-size: 3rem;
@@ -254,7 +255,7 @@ main {
     color: var(--gris-oscuro);
 }
 .filtros select {
-    flex: 1;
+    flex: 0.9;
     padding: 1rem;
     border: none;
     border-radius: 1rem;
@@ -420,6 +421,7 @@ body .modal {
 .contenido-gasto img {
     pointer-events: none;
 }
+
 /* Banner Media Queries */
 /* MAX WIDTH 1023 */
 @media (max-width: 1023px){
@@ -432,7 +434,7 @@ body .modal {
     .formulario input[type="number"].nuevo-presupuesto {
         font-size: 2rem;
         overflow: hidden;
-}
+    }
     .modal .formulario {
         width: 100vw !important;
     }
@@ -468,14 +470,14 @@ body .modal {
         font-size: 5.6rem;
     }
     .campo label, .campo input, #category, .formulario input {
-        font-size: 4rem !important;
+        font-size: 4rem;
         overflow: hidden;
     }
     .campo input, .formulario input {
-        font-size: 2rem !important;
+        font-size: 2rem;
     }
     #category {
-        font-size: 2.6rem !important;
+        font-size: 2.6rem;
     }
     .listado-gastos h2 {
         text-align: center;
@@ -486,6 +488,9 @@ body .modal {
     .contenedor-presupuesto div:first-child{
         margin-bottom: 0;
     }
+    .sf  {
+        font-size: 3rem !important;
+     }
 }
 /* MIN WIDTH 1024 */
 @media (min-width: 1024px){
